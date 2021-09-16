@@ -94,7 +94,7 @@ void write()
         }  
     }
     
-    if (n == 2) { // когда два контейнера
+    if (n == 2) { // когда две стопки
         int temp = 1;
         while (!st[temp].empty()) { // переносим все контейнеры в стопку 1
             int x = st[temp].top();
@@ -147,7 +147,7 @@ void write()
             st[idx].push(x);
             operations.push_back(make_pair(temp + 1, idx + 1));
         }
-        while (!st[temp2].empty()) { // из контейнер 3 в контейнер 2 
+        while (!st[temp2].empty()) { // из стопки 3 в стопку 2 
             int x = st[temp2].top();
             if (x == temp2 + 1) { // пока не встретим первую тройку
                 break;
