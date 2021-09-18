@@ -4,15 +4,15 @@ using namespace std;
 
 struct Heap
 {
-    vector<int> heap;
+    vector<int> heap; // храним наши элементы внутри вектора
     int size = 0;
     Heap() {
-        heap.push_back(0);
+        heap.push_back(0); // добавляем 0 чтобы была индексация с 1, а не с 0
     }
     void insert(int data) {
-        heap.push_back(data);
+        heap.push_back(data); // добавляем элемент в конец
         int index = heap.size() - 1;
-        shift_up(index);
+        shift_up(index); // тут мы его поднимаем наверх
         size++;
     } 
 
@@ -21,16 +21,16 @@ struct Heap
             return;
         }
         int parent = index / 2;
-        if (heap[index] < heap[parent]) {
+        if (heap[index] < heap[parent]) { // если элемент меньше чем его родитель меняем их местами
             swap(heap[index], heap[parent]);
-            shift_up(parent);
+            shift_up(parent); // идем в индекс родителя и проводим shift_up
         }
     }
 
     void del() {
-        swap(heap[1], heap.back());
-        heap.pop_back();
-        shift_down(1);
+        swap(heap[1], heap.back()); // убираем старый минимум в конец вектора
+        heap.pop_back(); // удаляем его
+        shift_down(1); // пытаемся опустить элемент вниз
         size--;
     }
 
@@ -39,16 +39,16 @@ struct Heap
             return;
         }
         int smallest = index;
-        int c1 = index * 2;
-        int c2 = index * 2 + 1;
-        if (heap[smallest] > heap[c1]) {
+        int c1 = index * 2; // левый ребенок
+        int c2 = index * 2 + 1; // правый ребенок
+        if (heap[smallest] > heap[c1]) { 
             smallest = c1;
         } 
         if (c2 < heap.size() && heap[smallest] > heap[c2]) {
             smallest = c2;
         }
  
-        if (smallest != index) {
+        if (smallest != index) { // если нашелся ребенок, у которого значение меньше чем у родителя, то свапаем их и проводим shift_down для ребенка
             swap(heap[index], heap[smallest]);
             shift_down(smallest);
         }
@@ -58,7 +58,7 @@ struct Heap
         if (size == 0) {
             return -1;
         }
-        return heap[1];
+        return heap[1]; // выводим root, в данном случаи он находится под индексом 1
     }
 };
 
