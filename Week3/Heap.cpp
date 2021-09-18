@@ -29,7 +29,7 @@ struct Heap
 
     void del() {
         if (size == 0) {
-            cout << "ERROR << endl;
+            cout << "ERROR" << endl;
             return;
         }
         swap(heap[1], heap.back()); // убираем старый минимум в конец вектора
