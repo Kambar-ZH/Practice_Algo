@@ -28,6 +28,10 @@ struct Heap
     }
 
     void del() {
+        if (size == 0) {
+            cout << "ERROR" << endl;
+            return;
+        }
         swap(heap[1], heap.back()); // убираем старый минимум в конец вектора
         heap.pop_back(); // удаляем его
         shift_down(1); // пытаемся опустить элемент вниз
@@ -62,8 +66,22 @@ struct Heap
     }
 };
 
+void heap_sort() {
+    Heap hp = Heap(); // min Heap
+    int n; cin >> n;
+    For(i, n) {
+        int x; cin >> x;
+        hp.insert(x);
+    }
+    For(i, n) {
+        cout << hp.getRoot() << " "; // get smallest in Heap
+        hp.del(); // delete smallest in Heap
+    }
+}
+
 int main()
 {
+//     heap_sort();
     int n; cin >> n;
     Heap hp = Heap();
     For(i, n) {
