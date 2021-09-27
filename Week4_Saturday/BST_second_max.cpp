@@ -10,12 +10,7 @@ using namespace __gnu_pbds;
 struct Node {
 	int val;
 	Node * left, * right;
-	Node (int val, Node * left, Node * right) {
-		this->val = val;
-		this->left = left;
-		this->right = right;
-	}
-    Node (int val) {
+    	Node (int val) {
 		this->val = val;
 		this->left = nullptr;
 		this->right = nullptr;
@@ -48,19 +43,19 @@ struct BST{
 	}
 
 	Node* second_maximum(Node* root) {
-		if (root->right != nullptr) {
-			Node* parent = root;
-			while (parent->right->right != nullptr) {
+		if (root->right != nullptr) { // если у корня имеется правое поддерево
+			Node* parent = root; // храним указатель на родителя самого правого ребенка
+			while (parent->right->right != nullptr) { // находим этого родителя
 				parent = parent->right;
 			}
 			
-			Node* right = parent->right;
-			if (right->left == nullptr) {
-				return parent;
+			Node* right = parent->right; // берем указатель на самого правого ребенка в дереве
+			if (right->left == nullptr) { // если у right нет левого поддерева
+				return parent; // возвращаем родителя, так как он самый близкий, меньший по значению
 			}
-			return rightmost(right->left);
+			return rightmost(right->left); // иначе идем в левое поддерево, и там ищем самое близкое значение к максимальному
 		} 
-		return rightmost(root->left);
+		return rightmost(root->left); // если у корня нет правого поддерева, возвращаем, самое большое значение в левом поддереве
 	}
 
 	void add(int x) {
@@ -91,13 +86,12 @@ struct BST{
 int main()
 {
 	freopen("output.txt", "w", stdout);
-    freopen("input.txt", "r", stdin);
+    	freopen("input.txt", "r", stdin);
 	int n;
 	BST bst = BST();
 	while (cin >> n) {
 		bst.add(n);
 	}
-	// bst.print();
 	cout << bst.second_maximum() << endl;
 	return 0;
 }
