@@ -14,7 +14,8 @@ int main()
 	For(i, n) {
 		a[i] = rand() % 100 + 10;
 	}
-	print(a);
+	For(i, n) cout << a[i] << " ";
+	see;
 	deque<int> dq;
 	For(i, k - 1) {
 		while (!dq.empty() && a[dq.back()] <= a[i]) {
