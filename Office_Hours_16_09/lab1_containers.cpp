@@ -1,11 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
+
+#define vt                  vector
 #define For(i, n)           for(int i = 0; i < n; ++i)
 
 void write()
 {
     int n; cin >> n;
-
     vt<pair<int, int> > operations;
     vector<stack<int> > st(n);
     bool bad_permutation = false;

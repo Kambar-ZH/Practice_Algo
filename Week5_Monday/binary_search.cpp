@@ -9,7 +9,7 @@ using namespace __gnu_pbds;
 
 int leftbound(vector<int> & a, int target) {
     int n = a.size();
-    int l = 0, r = n - 1, m; 
+    int l = 0, r = n - 1, m;
     while (l < r) {
         int m = (l + r) / 2;
         if (a[m] < target) {
@@ -23,7 +23,7 @@ int leftbound(vector<int> & a, int target) {
 
 int rightbound(vector<int> & a, int target) {
     int n = a.size();
-    int l = 0, r = n - 1, m; 
+    int l = 0, r = n - 1, m;
     while (l < r) {
         int m = (l + r + 1) / 2;
         if (a[m] <= target) {

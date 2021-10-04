@@ -58,7 +58,7 @@ struct Heap
         }
     }
 
-    int getRoot() {
+    int get_root() {
         if (size == 0) {
             return -1;
         }
@@ -74,7 +74,7 @@ void heap_sort() {
         hp.insert(x);
     }
     For(i, n) {
-        cout << hp.getRoot() << " "; // get smallest in Heap
+        cout << hp.get_root() << " "; // get smallest in Heap
         hp.del(); // delete smallest in Heap
     }
 }
@@ -89,10 +89,10 @@ int main()
         if (op == 1) {
             int x; cin >> x;
             hp.insert(x);
-            cout << "minimum number in heap: " << hp.getRoot() << endl;
+            cout << "minimum number in heap: " << hp.get_root() << endl;
         } else {
             hp.del();
-            cout << "minimum number in heap: " << hp.getRoot() << endl;
+            cout << "minimum number in heap: " << hp.get_root() << endl;
         }
     }
     return 0;

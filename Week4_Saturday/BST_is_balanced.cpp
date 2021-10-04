@@ -58,20 +58,20 @@ struct BST{
 		return depth(root);
 	}
 
-	bool isBalanced(Node* root) { 			// Не оптимальное решение, время работы O(N ^ 2)
+	bool is_balanced(Node* root) { 			// Не оптимальное решение, время работы O(N ^ 2)
 		if (root == nullptr) {			// Попробуй хранить высоту каждой ноды, без вызова функции depth 
 			return true;
 		}
 		int left_d = depth(root->left); 	// Берем высоту левого поддерева
 		int right_d = depth(root->right); 	// Берем высоту правого поддерева
 		return abs(left_d - right_d) <= 1 	// Проверяем на условие того что дерево сбалансированное
-			&& isBalanced(root->left)   	// Проверяем на сбалансированность левое поддерево
-			&& isBalanced(root->right); 	// Проверяем на сбалансированность правое поддерево
+			&& is_balanced(root->left)   	// Проверяем на сбалансированность левое поддерево
+			&& is_balanced(root->right); 	// Проверяем на сбалансированность правое поддерево
 						    	// так как они могут быть не сбалансированными
 	}
 	
-	bool isBalanced() {
-		return isBalanced(root);
+	bool is_balanced() {
+		return is_balanced(root);
 	}
 };
 
@@ -85,7 +85,7 @@ int main()
 		if (n == 0) break;
 		bst.add(n);
 	}
-	if (bst.isBalanced()) {
+	if (bst.is_balanced()) {
 		cout << "YES" << endl;
 	} else {
 		cout << "NO" << endl;
