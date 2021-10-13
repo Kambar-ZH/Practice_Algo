@@ -14,8 +14,8 @@ struct Heap {
 
 	void push(int data) {
 		heap.push_back(data);
-		int idx = heap.size() - 1;
-		shift_up(idx);
+		int root = heap.size() - 1;
+		shift_up(root);
 	}
 
 	void del() {
@@ -26,43 +26,43 @@ struct Heap {
 		shift_down(root);
 	}
 
-	void shift_down(int idx) {
-		if (idx * 2 + 1 >= heap.size()) {
+	void shift_down(int root) {
+		if (root + root + 1 >= heap.size()) {
 			return;
 		}
-		int left_ch = idx * 2 + 1;
-		int right_ch = idx * 2 + 2;
-		int min_idx = idx;
-		if (heap[min_idx] > heap[left_ch]) {
-			min_idx = left_ch;
+		int ch1 = root + root + 1;
+		int ch2 = root + root + 2;
+		int smallest = root;
+		if (heap[smallest] > heap[ch1]) {
+			smallest = ch1;
 		}
-		if (right_ch < heap.size() && heap[min_idx] > heap[right_ch]) {
-			min_idx = right_ch;
+		if (ch2 < heap.size() && heap[smallest] > heap[ch2]) {
+			smallest = ch2;
 		}
-		if (min_idx != idx) {
-			swap(heap[idx], heap[min_idx]);
-			shift_down(min_idx);
+		if (smallest != root) {
+			swap(heap[root], heap[smallest]);
+			shift_down(smallest);
 		}
 	}
 
-	void shift_up(int idx) {
-		if (idx == 0) {
+	void shift_up(int root) {
+		if (root == 0) {
 			return;
 		}
-		int parent_idx = idx / 2;
-		if (heap[parent_idx] > heap[idx]) {
-			swap(heap[parent_idx], heap[idx]);
-			shift_up(parent_idx);
+		int parent = (root - 1) / 2;
+		if (heap[parent] > heap[root]) {
+			swap(heap[parent], heap[root]);
+			shift_up(parent);
 		}
 	}
 
-	int get_min() {
+	int top() {
 		return heap[0];
 	}
 
 	void sort() {
 		while (!heap.empty()) {
-			cout << get_min() << " ";
+			cout << top() << " ";
 			del();
 		}
 		cout << endl;
@@ -75,13 +75,14 @@ int main()
 	vt<int> a(n);
 	For(i, n) a[i] = rand() % 100 + 1;
 	random_shuffle(a.begin(), a.end());
+    cout << "Random data: " << endl;
 	For(i, n) cout << a[i] << " ";
 	cout << endl;
 	Heap hp = Heap();
 	For(i, n) {
 		hp.push(a[i]);
-		cout << hp.get_min() << endl;
-	}
-	hp.sort();
+    }
+    cout << "Sorted data: " << endl;
+    hp.sort();
 	return 0;
 }
