@@ -7,7 +7,7 @@ using namespace std;
 #define For(i, n)           for(int i = 0; i < n; ++i)
 #define pii                 pair<int, int>
 
-const int MAX = 1e9 + 7;
+const int MAX = INT_MAX / 2;
 
 int main()
 {

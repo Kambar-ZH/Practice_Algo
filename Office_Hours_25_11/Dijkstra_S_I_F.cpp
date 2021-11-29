@@ -26,6 +26,9 @@ pair<int, vt<int> > Dijkstra(int s, int f) {
 			continue;
 		}
 		for (pii neighbour : g[cur.second]) {
+            // min_time[cur.from] <= cur.time_to_start && min_time[cur.to] > cur.time_to_end {
+            //     min_time[cur.to] = cur.time_to_end;
+            // } 
 			if (dist[neighbour.first] > cur.first + neighbour.second) {
 				dist[neighbour.first] = cur.first + neighbour.second;
 				pq.push({dist[neighbour.first], neighbour.first});
